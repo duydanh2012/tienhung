@@ -1,0 +1,10 @@
+@extends('public.index')
+@section('title', 'Trang Chủ')
+@section('content')
+    @include('public.partials.image-header')
+    @include('public.partials.intro')
+    @include('public.partials.featured-post')
+    @include('public.partials.last-post')
+    @include('public.partials.newletter')
+    @include('public.partials.gallery')
+@endsection
