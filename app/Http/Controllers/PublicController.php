@@ -34,6 +34,10 @@ class PublicController extends Controller
             $data = Post::find($slug->reference_id)
                         ->with('user')
                         ->with('categories')->first();
+         
+            $data->update([
+                'views' => $data->views + 1,
+            ]);            
             
             return view('public.views.post')->with(compact('data'));            
         }else if($slug->reference_type == Category::class){
@@ -69,6 +73,18 @@ class PublicController extends Controller
 
     public function search(Request $request)
     {
-        # code...
+        $rq = $request->input('search');
+        $data = Post::where('id', 'LIKE', '%' . $rq . '%')
+                        ->orWhere('name', 'LIKE', '%' . $rq . '%')
+                        ->orWhereHas('categories', function($q) use($rq){
+                            $q->where('name', 'LIKE', '%' . $rq . '%');
+                        })
+                        ->paginate(10);
+        
+        $category = (object)[
+            'name' => 'Tìm kiếm với từ khóa: '. $rq,
+        ]; 
+
+        return view('public.views.blog')->with(compact('data', 'category'));        
     }
 }

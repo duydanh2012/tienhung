@@ -8,8 +8,6 @@ $(document).ready(function () {
         $('.search-area').fadeOut();
     });
 
-    'use strict';
-
     // ------------------------------------------------------- //
     // For demo purposes only
     // ------------------------------------------------------ //
@@ -33,7 +31,6 @@ $(document).ready(function () {
             $.cookie("theme_csspath", theme_csspath, { expires: 365, path: document.URL.substr(0, document.URL.lastIndexOf('/')) });
 
         }
-
         return false;
     });
 

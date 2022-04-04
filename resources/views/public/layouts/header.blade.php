@@ -10,7 +10,8 @@
           <div class="close-btn"><i class="fas fa-times"></i></div>
           <div class="row d-flex justify-content-center">
             <div class="col-md-8">
-              <form action="#">
+              <form action="{{ route('public.search') }}" method="POST">
+                @csrf
                 <div class="form-group">
                   <input type="search" name="search" id="search" placeholder="Bạn muốn tìm kiếm điều gì?">
                   <button type="submit" class="submit"><i class="fas fa-search"></i></button>
@@ -48,6 +49,9 @@
             </li>
           </ul>
           <div class="navbar-text"><a href="#" class="search-btn"><i class="fas fa-search"></i></a></div>
+          <ul class="langs navbar-text">
+            <a href="#" class="active">{{ Auth::user()->name }}</a>
+            <a href="{{ route('public.logout') }}" class="active"><i class="fas fa-sign-out-alt"></i></a></ul>
         </div>
       </div>
     </nav>

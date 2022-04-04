@@ -16,6 +16,10 @@
             </div>
         </div>
     @endforeach
+    @if ($comments->count() > 5)
+        <a href="javascript:void(0);" data-value="{{ $comments->count() }}" data-current="4" class="font-weight-bold showMoreComment">Hiển thị thêm bình luận</a>
+        <a href="javascript:void(0);"  class="font-weight-bold hideComment">Ẩn bớt bình luận</a>
+    @endif
 @else
     <p class="none-comment">Không có bình luận</p>
 @endif

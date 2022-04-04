@@ -22,7 +22,7 @@ class checkAdminLogin
             if ($user->admin == 1){
                 return $next($request);
             }else{
-                return redirect()->back();
+                abort(404);
             }
         } else{
             return redirect(route('public.login'));
