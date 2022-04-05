@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Request;
 use App\Models\Slug;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Contact;
 use App\Models\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
 {
@@ -68,7 +71,30 @@ class PublicController extends Controller
 
     public function contact()
     {
-        # code...
+        return view('public.views.contact');
+    }
+
+    public function postContact(ContactRequest $request)
+    {
+        Contact::create($request->input());
+
+        $data = array(
+            'name'    => $request->input('name'),
+            'subject' => $request->input('subject'),
+            'messageContact' => $request->input('message'),
+            'email'   => $request->input('email'),
+        );
+
+        try {
+            Mail::send('public.email.send-contact', $data, function($mail) use ($data){
+                $mail->from($data['email'], $data['name']);
+                $mail->to('abc2012199@gmail.com', 'Admin')->subject('Liên hệ');
+            });
+        } catch (\Throwable $th) {
+           dd($th);
+        }
+
+        return redirect()->back()->with('alert_success','Gửi thư thành công!');
     }
 
     public function search(Request $request)

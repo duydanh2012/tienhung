@@ -8,6 +8,7 @@ use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,12 +42,14 @@ Route::group(['middleware' => 'checkAdminLogin', 'prefix' => 'admin'], function(
     Route::resource('posts', PostController::class);
     Route::resource('users', UserController::class);
     Route::resource('comments', CommentController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('contact', ContactController::class)->except('create', 'store', 'show');
     
     Route::get('reset-password/{id}',   [UserController::class, 'forget'])    ->name('users.forget');
     Route::post('post/search',          [PostController::class, 'search'])    ->name('posts.search');
     Route::post('comments/search/{id}', [CommentController::class, 'search']) ->name('comments.search');
     Route::post('categories/search',    [CategoryController::class, 'search'])->name('categories.search');
     Route::post('users/search',         [UserController::class, 'search'])    ->name('users.search');
+    Route::post('contact/search',       [ContactController::class, 'search']) ->name('contact.search');
 });
 
 Route::group(['prefix' => '/'], function() {
@@ -55,5 +58,7 @@ Route::group(['prefix' => '/'], function() {
     Route::get('lien-he', [PublicController::class, 'contact'])->name('public.contact');
     Route::post('search', [PublicController::class, 'search']) ->name('public.search');
     Route::post('comment/{id}', [PublicController::class, 'comment']) -> name('public.comment');
+    Route::get('lien-he', [PublicController::class, 'contact'])->name('public.contact');
+    Route::post('lien-he', [PublicController::class, 'postContact'])->name('public.postContact');
     Route::get('{slug}',  [PublicController::class, 'getView'])->name('public.single');
 });

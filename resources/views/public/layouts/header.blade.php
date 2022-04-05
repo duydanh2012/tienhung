@@ -45,13 +45,21 @@
               </li>
             @endforeach
 
-            <li class="nav-item"><a href="#" class="nav-link ">Liên Hệ</a>
+            <li class="nav-item"><a href="{{ route('public.contact') }}" class="nav-link ">Liên Hệ</a>
             </li>
           </ul>
           <div class="navbar-text"><a href="#" class="search-btn"><i class="fas fa-search"></i></a></div>
-          <ul class="langs navbar-text">
-            <a href="#" class="active">{{ Auth::user()->name }}</a>
-            <a href="{{ route('public.logout') }}" class="active"><i class="fas fa-sign-out-alt"></i></a></ul>
+          @if (Auth::check())
+            <ul class="langs navbar-text">
+              <a href="#" class="active">{{ Auth::user()->name }}</a>
+              <a href="{{ route('public.logout') }}" class="active"><i class="fas fa-sign-out-alt"></i></a>
+            </ul>
+          @else
+            <ul class="langs navbar-text">
+              <a href="{{ route('public.login') }}" class="active">Đăng nhập</a>
+            </ul>
+          @endif
+
         </div>
       </div>
     </nav>
