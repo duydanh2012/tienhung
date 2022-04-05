@@ -17,7 +17,11 @@
                     </div>
                     @endif
                 </div>
-                <h1>{{ $data->name }}<a href="{{ getUrl($data) }}"><i class="far fa-bookmark"></i></a></h1>
+                <h1>{{ $data->name }}
+                    @if (Auth::check())
+                        <a href="/bookmark" data-value="{{ $data->id }}" class="bookmark saveBookmark" @if(checkBookmark($data->id, Auth::user()->id)) style="opacity: 1" @endif><i class="far fa-bookmark"></i></a>
+                    @endif
+                </h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="javascript:void(0);"
                         class="author d-flex align-items-center flex-wrap">
                         <div class="title"><span>{{ getUser($data) }}</span></div>

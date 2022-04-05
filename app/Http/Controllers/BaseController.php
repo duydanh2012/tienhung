@@ -82,7 +82,7 @@ class BaseController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect(route('public.login'));
+        return redirect(route('public.index'));
     }
 
     public function dashboard()

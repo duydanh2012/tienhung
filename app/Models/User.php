@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -48,5 +49,10 @@ class User extends Authenticatable
     public function comment(): HasMany
     {
     	return $this->hasMany(Comment::class, 'user_id', 'id');
+    }
+
+    public function bookmark(): HasMany
+    {
+        return $this->hasMany(Bookmark::class, 'user_id', 'id');
     }
 }

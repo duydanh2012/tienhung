@@ -24,16 +24,12 @@
         <div class="col-md-4">
           <div class="menus d-flex">
             <ul class="list-unstyled">
-              <li> <a href="javascript:void(0);">My Account</a></li>
-              <li> <a href="javascript:void(0);">Add Listing</a></li>
-              <li> <a href="javascript:void(0);">Pricing</a></li>
-              <li> <a href="javascript:void(0);">Privacy &amp; Policy</a></li>
+              <li> <a href="{{ route('public.user') }}">Người Dùng</a></li>
+              <li> <a href="{{ route('public.index') }}">Trang Chủ</a></li>
             </ul>
             <ul class="list-unstyled">
-              <li> <a href="javascript:void(0);">Our Partners</a></li>
-              <li> <a href="javascript:void(0);">FAQ</a></li>
-              <li> <a href="javascript:void(0);">How It Works</a></li>
-              <li> <a href="javascript:void(0);">Contact</a></li>
+              <li> <a href="{{ route('public.contact') }}">Liên hệ</a></li>
+              <li> <a href="{{ route('public.blog') }}">Bài viết</a></li>
             </ul>
           </div>
         </div>

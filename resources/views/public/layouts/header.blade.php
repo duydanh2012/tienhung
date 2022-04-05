@@ -51,7 +51,7 @@
           <div class="navbar-text"><a href="#" class="search-btn"><i class="fas fa-search"></i></a></div>
           @if (Auth::check())
             <ul class="langs navbar-text">
-              <a href="#" class="active">{{ Auth::user()->name }}</a>
+              <a href="{{ route('public.user') }}" class="active">{{ Auth::user()->name }}</a>
               <a href="{{ route('public.logout') }}" class="active"><i class="fas fa-sign-out-alt"></i></a>
             </ul>
           @else

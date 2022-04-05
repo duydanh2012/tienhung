@@ -129,7 +129,7 @@
                         <li class="nav-item">
                             <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                             <a class="nav-link"
-                                href="{{ route('users.edit', Auth::user()->id) }}">
+                                href="{{ route('public.user') }}">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person"
                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">

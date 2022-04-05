@@ -4,7 +4,7 @@
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
 
-            <h1 class="app-page-title">Danh mục</h1>
+            <h1 class="app-page-title">Thay đổi thông tin người dùng</h1>
             <hr class="mb-4">
 
             <div class="row g-4 settings-section">

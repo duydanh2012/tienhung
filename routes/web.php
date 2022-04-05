@@ -52,13 +52,22 @@ Route::group(['middleware' => 'checkAdminLogin', 'prefix' => 'admin'], function(
     Route::post('contact/search',       [ContactController::class, 'search']) ->name('contact.search');
 });
 
-Route::group(['prefix' => '/'], function() {
-    Route::get('/',       [PublicController::class, 'index'])  ->name('public.index');
-    Route::get('tin-tuc',    [PublicController::class, 'blog'])   ->name('public.blog');
-    Route::get('lien-he', [PublicController::class, 'contact'])->name('public.contact');
-    Route::post('search', [PublicController::class, 'search']) ->name('public.search');
-    Route::post('comment/{id}', [PublicController::class, 'comment']) -> name('public.comment');
-    Route::get('lien-he', [PublicController::class, 'contact'])->name('public.contact');
-    Route::post('lien-he', [PublicController::class, 'postContact'])->name('public.postContact');
-    Route::get('{slug}',  [PublicController::class, 'getView'])->name('public.single');
-});
+Route::get('/',       [PublicController::class, 'index'])  ->name('public.index');
+Route::get('tin-tuc',    [PublicController::class, 'blog'])   ->name('public.blog');
+Route::get('lien-he', [PublicController::class, 'contact'])->name('public.contact');
+Route::post('search', [PublicController::class, 'search']) ->name('public.search');
+Route::post('comment/{id}', [PublicController::class, 'comment']) -> name('public.comment');
+Route::get('lien-he', [PublicController::class, 'contact'])->name('public.contact');
+Route::post('lien-he', [PublicController::class, 'postContact'])->name('public.postContact');
+
+Route::get('nguoi-dung', [PublicController::class, 'user'])->name('public.user');
+Route::post('nguoi-dung', [PublicController::class, 'updateUser'])->name('public.update.user');
+
+Route::get('thay-doi-mat-khau', [PublicController::class, 'changePass'])->name('public.user.pass');
+Route::post('thay-doi-mat-khau', [PublicController::class, 'updatePass'])->name('public.update.pass');
+
+Route::get('bookmark', [PublicController::class, 'bookmark'])->name('public.save.bookmark');
+Route::get('unbookmark', [PublicController::class, 'unbookmark'])->name('public.unsave.bookmark');
+Route::get('bai-viet-da-luu', [PublicController::class, 'getBookmark'])->name('public.getBookmark');
+
+Route::get('{slug}',  [PublicController::class, 'getView'])->name('public.single');

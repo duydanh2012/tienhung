@@ -39,4 +39,38 @@ $(document).ready(function(){
         $(this).hide();
         commentShow = 4;
     });
+
+    $(document).on('click', '.saveBookmark', function(e){
+        e.preventDefault();
+        
+        $.ajax({
+            url: $(this).attr('href'),
+            data:{
+                'id' : $(this).data('value'),
+            },
+            type: 'GET',
+            success: function(data){
+                $('.bookmark').css('opacity', '1');
+                $('.bookmark').removeClass('saveBookmark').addClass('unsaveBookmark');
+                $('.bookmark').attr('href', '/unbookmark');
+            }
+        });
+    });
+
+    $(document).on('click', '.unsaveBookmark', function(e){
+        e.preventDefault();
+        
+        $.ajax({
+            url: $(this).attr('href'),
+            data:{
+                'id' : $(this).data('value'),
+            },
+            type: 'GET',
+            success: function(data){
+                $('.bookmark').css('opacity', '0');
+                $('.bookmark').removeClass('unsaveBookmark').addClass('saveBookmark');
+                $('.bookmark').attr('href', '/bookmark');
+            }
+        });
+    });
 });

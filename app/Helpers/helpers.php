@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Bookmark;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -102,5 +104,21 @@ if (!function_exists('getCommentWithPost')) {
     function getCommentWithPost($postId)
     {
         return Comment::where('post_id', $postId)->with('user')->get();         
+    }
+}
+
+if (!function_exists('checkBookmark')) {
+    function checkBookmark($postId, $userID)
+    {
+        $bookmark = Bookmark::where([
+                    'post_id' => $postId,
+                    'user_id' => $userID,
+                ])->first();
+
+        if(!empty($bookmark)){
+            return true;
+        }else{
+            return false;
+        }        
     }
 }
