@@ -65,7 +65,7 @@ var lineChartConfig = {
 		
 		title: {
 			display: true,
-			text: 'Chart.js Line Chart Example',
+			text: 'Biểu đồ lượt xem',
 			
 		}, 
 		tooltips: {
@@ -82,12 +82,11 @@ var lineChartConfig = {
 			titleFontColor: window.chartColors.text,
 
             callbacks: {
-	            //Ref: https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
                 label: function(tooltipItem, data) {
 	                if (parseInt(tooltipItem.value) >= 1000) {
-                        return "$" + tooltipItem.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        return tooltipItem.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     } else {
-	                    return '$' + tooltipItem.value;
+	                    return  tooltipItem.value;
                     }
                 }
             },
@@ -121,7 +120,7 @@ var lineChartConfig = {
 				ticks: {
 		            beginAtZero: true,
 		            userCallback: function(value, index, values) {
-		                return '$' + value.toLocaleString();   //Ref: https://stackoverflow.com/questions/38800226/chart-js-add-commas-to-tooltip-and-y-axis
+		                return value.toLocaleString();  
 		            }
 		        },
 			}]
@@ -139,20 +138,20 @@ var barChartConfig = {
 	data: {
 		labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 		datasets: [{
-			label: 'Orders',
+			label: 'Bài viết',
 			backgroundColor: window.chartColors.green,
 			borderColor: window.chartColors.green,
 			borderWidth: 1,
 			maxBarThickness: 16,
 			
 			data: [
-				23,
-				45,
-				76,
-				75,
-				62,
-				37,
-				83
+				3,
+				5,
+				6,
+				5,
+				2,
+				7,
+				8
 			]
 		}]
 	},
@@ -165,7 +164,7 @@ var barChartConfig = {
 		},
 		title: {
 			display: true,
-			text: 'Chart.js Bar Chart Example'
+			text: 'Số bài viết đã đăng'
 		},
 		tooltips: {
 			mode: 'index',

@@ -122,3 +122,21 @@ if (!function_exists('checkBookmark')) {
         }        
     }
 }
+
+if (!function_exists('countPost')) {
+    function countPost()
+    {
+        $post = Post::count();
+
+        return $post;      
+    }
+}
+
+if (!function_exists('countUser')) {
+    function countUser()
+    {
+        $post = User::count();
+
+        return $post;      
+    }
+}
