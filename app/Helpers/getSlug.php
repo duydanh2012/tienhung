@@ -68,6 +68,7 @@ function updateSlug(string $slug, $model)
 }
 
 function deleteSlug($model){
+    dd($model);
     DB::table('slugs')->where([
         'reference_id' => $model->id,
         'reference_type' => get_class($model),

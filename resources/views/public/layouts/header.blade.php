@@ -1,5 +1,5 @@
 @php
-  $menus = getCategoryHeader(3);
+  $menus = getCategoryHeader(6);
 @endphp
 
 <header class="header">

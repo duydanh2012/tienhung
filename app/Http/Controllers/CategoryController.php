@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -119,8 +120,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $data = Category::destroy($id);
-
+        DB::table('post_categories')->where('category_id', $id)->delete();
+        $data = Category::find($id);
+        Category::destroy($id);
         deleteSlug($data);
         
         return redirect(route('categories.index'))->with('alert_success', 'Xóa thành công!');
